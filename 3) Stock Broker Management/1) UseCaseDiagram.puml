@@ -1,0 +1,45 @@
+!usecase diagram
+@startuml
+
+!define ACTOR <<Actor>>
+
+actor User as User
+actor Admin as Admin
+actor System as "System"
+
+ User --> (Create Account)
+ User --> (Cancel Membership)
+ User --> (Update Account)
+ User --> (Login/Logout)
+ User --> (Search Stock Inventory)
+ User --> (Place Order)
+
+(Place Order)  --> (Search Stock Inventory)
+(Place Market Order)  --> (Place Order)
+(Place limit Order)  --> (Place Order)
+(Place stop loss Order)  --> (Place Order)
+(Place stop limit Order)  --> (Place Order)
+
+ User --> (Cancel Order)
+ User --> (Create/Update Watchlist)
+ User --> (Add Stock to Watchlist)
+ User --> (View Stock Positions)
+ User --> (Deposit/Withdraw Money)
+
+(Deposit/Withdraw Money) --> (Transfer Money) 
+(Check Transfer) --> (Transfer Money)
+(Wire Transfer) --> (Transfer Money)
+(Electronic Bank Transfer) --> (Transfer Money)
+
+
+ System --> (Fetch stock quotes from stock exchange)
+ System --> (Send order Change Notification)
+ System --> (Send deposit/withdrawl status change Notification)
+
+
+ Admin --> (Create Account)
+ Admin --> (Cancel Membership)
+ Admin --> (Update Account)
+ Admin --> (Login/Logout)
+ Admin --> (Block/Unblock Member)
+@enduml
